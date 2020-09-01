@@ -32,6 +32,12 @@ public class App {
                     case "countEventByPolicy":
                         SIEMParser.countEventByPolicy(args[0], args[2]);
                         break;
+                    case "countEventByTimestamps":
+                        String[] timestamps = args[2].split("-");
+                        long start = Long.parseLong(timestamps[0]);
+                        long end = Long.parseLong(timestamps[1]);
+                        SIEMParser.countEventByTimestamps(args[0], start, end);
+                        break;
                     default:
                         System.out.println("You specify incorrect command! Please try again");
                 }
@@ -40,7 +46,7 @@ public class App {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("This SIEM event processor CLI takes two arguments: \n" +
+            System.out.println("This SIEM event processor CLI takes 2-3 arguments: \n" +
                     "1) Full path to JSON file containing JSON body from SIEM call \n" +
                     "2) Command \n" +
                     "3) (optional) for command countEventByPolicy specify the policyId\n\n" +
@@ -49,7 +55,8 @@ public class App {
                     "it output the timestamp of first event and last event \n" +
                     "2) countUniqueIps - output all the unique Client IP and the total number \n" +
                     "3) countEventByPolicy - output total number of SIEM event by policy - take one additional arg: policyid\n" +
-                    "4) totalEvent - output the total number of security event in the file");
+                    "4) totalEvent - output the total number of security event in the JSON file\n" +
+                    "5) countEventByTimestamps - output the total number of security event in the JSON file\n");
         }
     }
 

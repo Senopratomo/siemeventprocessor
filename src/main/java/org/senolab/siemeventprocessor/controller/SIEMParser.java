@@ -104,4 +104,27 @@ public class SIEMParser {
         }
         System.out.println("Total number of events: "+numOfEvents);
     }
+
+    public static void countEventByTimestamps(String jsonFile, long start, long end) throws FileNotFoundException {
+        JsonStreamParser jsonStreamParser = new JsonStreamParser(
+                new InputStreamReader(
+                        new FileInputStream(jsonFile), StandardCharsets.UTF_8));
+        Gson gson = new GsonBuilder().create();
+        Event event = null;
+        int numOfEvents = 0;
+        while (jsonStreamParser.hasNext()) {
+            JsonElement jsonElement = jsonStreamParser.next();
+            if(jsonElement.isJsonObject()) {
+                JsonObject jsonObject = jsonElement.getAsJsonObject();
+                if (jsonObject.has("type")) {
+                    event = gson.fromJson(jsonObject, Event.class);
+                    long timestamp = Long.parseLong(event.getHttpMessage().getStart());
+                    if(timestamp >= start && timestamp <= end) {
+                        numOfEvents++;
+                    }
+                }
+            }
+        }
+        System.out.println("Total number of events between "+start+" and "+end+" : "+numOfEvents);
+    }
 }
