@@ -56,7 +56,15 @@ public class App {
                     "2) countUniqueIps - output all the unique Client IP and the total number \n" +
                     "3) countEventByPolicy - output total number of SIEM event by policy - take one additional arg: policyid\n" +
                     "4) totalEvent - output the total number of security event in the JSON file\n" +
-                    "5) countEventByTimestamps - output the total number of security event in the JSON file\n");
+                    "5) countEventByTimestamps - output the total number of security event in the JSON file within start and end timestamps args" +
+                    " - take one additional arg start and end timestamp (in epoch format) separated by '-' (dash): {startTimestamp}-{endTimestamp}\n" +
+                    "\n" +
+                    "Sample usage: \n" +
+                    "1) java -jar SIEMProcessor.jar /home/user/siem_output.json getBeginAndEndTimestamps\n" +
+                    "2) java -jar SIEMProcessor.jar /home/user/siem_output.json countUniqueIps\n" +
+                    "3) java -jar SIEMProcessor.jar /home/user/siem_output.json countEventByPolicy policy_1234\n" +
+                    "4) java -jar SIEMProcessor.jar /home/user/siem_output.json totalEvent\n" +
+                    "5) java -jar SIEMProcessor.jar /home/user/siem_output.json countEventByTimestamps 1599030062-1599030262\n\n");
         }
     }
 

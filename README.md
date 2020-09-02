@@ -39,7 +39,13 @@
 </p>    
 <br>
 <p>Sample usage:<br>
-Coming soon....
+    <ul>
+        <li>1) java -jar SIEMProcessor.jar /home/user/siem_output.json getBeginAndEndTimestamps</li>
+        <li>2) java -jar SIEMProcessor.jar /home/user/siem_output.json countUniqueIps</li>            
+        <li>3) java -jar SIEMProcessor.jar /home/user/siem_output.json countEventByPolicy policy_1234</li>
+        <li>4) java -jar SIEMProcessor.jar /home/user/siem_output.json totalEvent</li>
+        <li>5) java -jar SIEMProcessor.jar /home/user/siem_output.json countEventByTimestamps 1599030062-1599030262</li>
+    </ul>
 <br>
 <br>
 any feedback or issue, feel free to email esenopra@akamai.com with subject "OpenCLIClient - Feedback"
