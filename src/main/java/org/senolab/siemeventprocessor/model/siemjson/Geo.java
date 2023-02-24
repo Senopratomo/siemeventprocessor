@@ -1,4 +1,4 @@
-package org.senolab.siemeventprocessor.model;
+package org.senolab.siemeventprocessor.model.siemjson;
 
 public class Geo {
     String continent;
